@@ -1,0 +1,21 @@
+services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.29
+    dns:
+      - ${DNS_SERVER}
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=homelab.local
+      - NGINX_PORT=80
+    restart: always
+    networks:
+      - homelab-net
+
+networks:
+  homelab-net:
+    external: true

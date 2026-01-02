@@ -1,0 +1,25 @@
+services:
+  grafana:
+    image: grafana/grafana:main-ubuntu
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3003:3000"
+    volumes:
+      - grafana-data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=${GF_SECURITY_ADMIN_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD}
+    networks:
+      - zabbix-net
+      - grafana-net
+      - homelab-net
+
+volumes:
+  grafana-data:
+  
+networks:
+  zabbix-net:
+  grafana-net:
+  homelab-net:
+    external: true

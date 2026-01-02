@@ -1,0 +1,25 @@
+services:
+    semaphore:
+        container_name: semaphore
+        restart: unless-stopped
+        ports:
+            - 3002:3000
+        image: semaphoreui/semaphore:v2.16.35
+        volumes:
+            - semaphore-data:/var/semaphore
+        environment:
+            - SEMAPHORE_DB_DIALECT=sqlite
+            - SEMAPHORE_ADMIN=${SEMAPHORE_ADMIN}
+            - SEMAPHORE_ADMIN_PASSWORD=${SEMAPHORE_ADMIN_PASSWORD}
+            - SEMAPHORE_ADMIN_NAME=${SEMAPHORE_ADMIN_NAME}
+            - SEMAPHORE_ADMIN_EMAIL=${SEMAPHORE_ADMIN_EMAIL}
+        networks:
+            - homelab-net
+
+networks:
+  homelab-net:
+    external: true
+
+volumes:
+    semaphore-data:
+        driver: local

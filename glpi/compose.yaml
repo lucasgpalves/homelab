@@ -1,0 +1,43 @@
+services:
+  glpi:
+    container_name: glpi
+    image: "glpi/glpi:11.0"
+    restart: "unless-stopped"
+    volumes:
+      - "glpi-data:/var/glpi:rw"
+    env_file: .env
+    depends_on:
+      - glpi-db
+    ports:
+      - "8001:80"
+    networks:
+      - glpi-net
+      - homelab-net
+
+  glpi-db:
+    container_name: glpi-db
+    image: "mysql:8"
+    restart: "unless-stopped"
+    volumes:
+       - "glpi-db-data:/var/lib/mysql"
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+      MYSQL_DATABASE: ${GLPI_DB_NAME}
+      MYSQL_USER: ${GLPI_DB_USER}
+      MYSQL_PASSWORD: ${GLPI_DB_PASSWORD}
+    expose:
+      - "3306"
+    networks:
+      - glpi-net
+
+networks:
+  glpi-net:
+    name: glpi-net
+  homelab-net:
+    external: true 
+
+volumes:
+  glpi-data:
+    driver: local
+  glpi-db-data:
+    driver: local
