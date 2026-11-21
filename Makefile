@@ -95,7 +95,7 @@ ifndef STACK
 endif
 	@$(COMPOSE) -f $(STACK)/compose.yaml --project-directory $(STACK) logs -f --tail=100
 
-db dnsmasq nginx: networks
+db dnsmasq vaultwarden nginx: networks
 	@$(COMPOSE) -f $@/compose.yaml --project-directory $@ up -d
 
 gitea zabbix grafana: networks check-env

@@ -15,11 +15,12 @@ Objetivo: praticar infraestrutura próxima de cenários reais — Git, CI/CD, ob
 | DNS | dnsmasq | Resolve `*.homelab.local` na LAN |
 | Proxy | Nginx | Entrada HTTP→HTTPS (`:80` / `:443`) |
 | TLS | mkcert | CA local + certificado `*.homelab.local` |
-| Banco | PostgreSQL 15 | Instância única, DBs `gitea` e `zabbix` |
+| Banco | PostgreSQL 15 | Instância única, DBs `gitea`, `zabbix` e `vaultwarden` |
 | Git | Gitea | Repositórios |
 | CI/CD | Drone | Pipelines integrados ao Gitea |
 | Monitoramento | Zabbix + Grafana | Métricas e dashboards |
 | Automação | Semaphore | Ansible (uso futuro) |
+| Armazenamento de senhas | Vaultwarden | Armazenas credenciais de admin |
 
 Redes Docker externas: `homelab-net`, `gitea-net`, `zabbix-net`.
 
@@ -42,6 +43,7 @@ cp grafana/.env.grafana.example grafana/.env
 cp nginx/.env.nginx.example nginx/.env
 cp drone/.env.drone.example drone/.env
 cp semaphore/.env.semaphore.example semaphore/.env
+cp vaultwarden/.env.vaultwarden.example vaultwarden/.env
 
 # Ajuste IP da LAN em dnsmasq.conf / dnsmasq.hosts e as senhas nos .env
 
@@ -67,7 +69,8 @@ homelab/
 ├── drone/
 ├── zabbix/
 ├── grafana/
-└── semaphore/
+├── semaphore/
+└── vaultwarden/
 ```
 
 Arquivos locais (ignorados pelo Git): `.env`, `dnsmasq.conf`, `dnsmasq.hosts`, `nginx/certs/`.

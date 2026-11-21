@@ -20,6 +20,7 @@ Goal: practice near-real infrastructure — Git, CI/CD, observability, internal 
 | CI/CD | Drone | Pipelines integrated with Gitea |
 | Monitoring | Zabbix + Grafana | Metrics and dashboards |
 | Automation | Semaphore | Ansible (planned use) |
+| Password storage | Vaultwarden | Storage admin credentials |
 
 External Docker networks: `homelab-net`, `gitea-net`, `zabbix-net`.
 
@@ -42,6 +43,7 @@ cp grafana/.env.grafana.example grafana/.env
 cp nginx/.env.nginx.example nginx/.env
 cp drone/.env.drone.example drone/.env
 cp semaphore/.env.semaphore.example semaphore/.env
+cp vaultwarden/.env.vaultwarden.example vaultwarden/.env
 
 # Set your LAN IP in dnsmasq.conf / dnsmasq.hosts and passwords in the .env files
 
