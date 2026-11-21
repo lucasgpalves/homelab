@@ -23,7 +23,7 @@ services:
     depends_on:
       - zabbix-server
     environment:
-      DB_SERVER_HOST: zabbix-db
+      DB_SERVER_HOST: ${ZABBIX_POSTGRES_HOST}
       POSTGRES_USER: ${ZABBIX_POSTGRES_USER}
       POSTGRES_PASSWORD: ${ZABBIX_POSTGRES_PASSWORD}
       POSTGRES_DB: ${ZABBIX_POSTGRES_DB}
@@ -59,7 +59,6 @@ networks:
     external: true
 
 volumes:
-  zabbix-db-data:
   zabbix-server-externalscripts:
   zabbix-server-mibs:
   zabbix-agent2-d:
