@@ -46,6 +46,7 @@ cp grafana/.env.grafana.example grafana/.env
 cp nginx/.env.nginx.example nginx/.env
 cp drone/.env.drone.example drone/.env
 cp semaphore/.env.semaphore.example semaphore/.env
+cp vaultwarden/.env.vaultwarden.example vaultwarden/.env
 ```
 
 Ajustes obrigatórios:
@@ -56,6 +57,7 @@ Ajustes obrigatórios:
 4. Gitea: `GITEA_DB_HOST=db:5432`
 5. Zabbix: `ZABBIX_POSTGRES_HOST=db`
 6. Nginx: `DNS_SERVER=127.0.0.11` (DNS do Docker, **não** o dnsmasq)
+7. Vaultwarden: `VAULT_DATABASE_URL=postgresql://user:password@db:5432/vaultwarden`
 
 ```bash
 make up
@@ -114,6 +116,7 @@ Atalho (`hosts`):
 10.1.1.10  zabbix.homelab.local
 10.1.1.10  grafana.homelab.local
 10.1.1.10  semaphore.homelab.local
+10.1.1.10  vault.homelab.local
 ```
 
 ---
