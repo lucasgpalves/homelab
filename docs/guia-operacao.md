@@ -1,5 +1,7 @@
 # Guia de operação do Homelab
 
+**Português** | [English](operations-guide.md)
+
 Documento prático para subir, manter e depurar o ambiente.  
 Complementa o `README.md` com o “como fazer” do dia a dia.
 

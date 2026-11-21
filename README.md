@@ -1,6 +1,8 @@
 # Homelab
 
-Mini-servidor doméstico com **Ubuntu Server 24.04** em notebook ocioso (i5 6ª geração, 8 GB RAM, 128 GB SSD), orquestrado com Docker Compose.
+**Português** | [English](README.en.md)
+
+Mini-servidor doméstico com **Ubuntu Server 24.04** em *mini-desktops* (i3-8100, 8 GB RAM, 256 GB SSD), orquestrado com Docker Compose.
 
 Objetivo: praticar infraestrutura próxima de cenários reais — Git, CI/CD, observabilidade, DNS interno e proxy reverso — sem depender só de VMs.
 
@@ -48,7 +50,7 @@ make up
 
 Comandos úteis: `make help`, `make ps`, `make logs STACK=gitea`, `make tls-certs`, `make down`.
 
-Guia completo (DNS no Windows, TLS, troubleshooting): **[docs/guia-operacao.md](docs/guia-operacao.md)**
+Guia completo (DNS no Windows, TLS, troubleshooting): **[docs/guia-operacao.md](docs/guia-operacao.md)** · [English](docs/operations-guide.md)
 
 ---
 
@@ -57,7 +59,7 @@ Guia completo (DNS no Windows, TLS, troubleshooting): **[docs/guia-operacao.md](
 ```text
 homelab/
 ├── Makefile
-├── docs/guia-operacao.md
+├── docs/        # Guias de operação (PT/EN)
 ├── db/          # Postgres compartilhado + init dos databases
 ├── dnsmasq/     # DNS da LAN
 ├── nginx/       # Proxy + TLS
