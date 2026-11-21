@@ -2,8 +2,6 @@ services:
     semaphore:
         container_name: semaphore
         restart: unless-stopped
-        ports:
-            - 3002:3000
         image: semaphoreui/semaphore:v2.16.35
         volumes:
             - semaphore-data:/var/semaphore

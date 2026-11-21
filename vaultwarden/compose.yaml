@@ -2,8 +2,6 @@ services:
   vault:
     container_name: vault
     restart: unless-stopped
-    ports:
-        - "80"
     image: vaultwarden/server:1.37.5
     environment:
       - DATABASE_URL=${VAULT_DATABASE_URL}

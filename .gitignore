@@ -8,5 +8,7 @@ dnsmasq.hosts
 nginx/certs/
 nginx/.bin/
 *.pem
+*.crt
+
 .gitignore
 .cursor

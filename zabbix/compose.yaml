@@ -29,8 +29,6 @@ services:
       POSTGRES_DB: ${ZABBIX_POSTGRES_DB}
       zabbix_SERVER_HOST: zabbix-server
       PHP_TZ: ${PHP_TZ}
-    ports:
-      - "8080:8080"
     networks:
       - zabbix-net
       - homelab-net
