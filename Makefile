@@ -1,9 +1,9 @@
 .PHONY: help networks up down restart ps logs check-env tls-certs \
 	up-infra up-apps \
-	db gitea zabbix grafana drone semaphore nginx dnsmasq
+	db gitea zabbix grafana drone semaphore nginx dnsmasq vault
 
 COMPOSE := docker compose
-NETWORKS := homelab-net gitea-net zabbix-net
+NETWORKS := homelab-net gitea-net zabbix-net vault-net
 
 help:
 	@echo "Homelab — alvos disponíveis:"
@@ -46,6 +46,9 @@ check-env:
 	if [ ! -f nginx/.env ]; then \
 		echo "Aviso: nginx/.env não encontrado (copie de .env.nginx.example)"; \
 	fi; \
+	if [ ! -f vaultwarden/.env ]; then \
+		echo "Aviso: drone/.env não encontrado (copie de .env.drone.example)"; \
+	fi; \
 	if [ $$missing -ne 0 ]; then \
 		echo "Crie os .env obrigatórios antes de subir o ambiente."; \
 		exit 1; \
@@ -60,6 +63,7 @@ up-infra: networks
 	@$(COMPOSE) -f dnsmasq/compose.yaml --project-directory dnsmasq up -d
 	@$(COMPOSE) -f db/compose.yaml --project-directory db up -d
 	@$(COMPOSE) -f nginx/compose.yaml --project-directory nginx up -d
+	@$(COMPOSE) -f vaultwarden/compose.yaml --project-directory vaultwarden up -d
 
 up-apps: check-env
 	@$(COMPOSE) -f gitea/compose.yaml --project-directory gitea up -d
@@ -73,7 +77,7 @@ up: check-env up-infra up-apps
 	@$(MAKE) --no-print-directory ps
 
 down:
-	@for stack in semaphore drone grafana zabbix gitea nginx db dnsmasq; do \
+	@for stack in semaphore drone grafana zabbix gitea vault nginx db dnsmasq; do \
 		echo "<< $$stack"; \
 		$(COMPOSE) -f $$stack/compose.yaml --project-directory $$stack down || true; \
 	done

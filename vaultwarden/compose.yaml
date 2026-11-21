@@ -1,0 +1,25 @@
+services:
+  vault:
+    container_name: vault
+    restart: unless-stopped
+    ports:
+        - "80"
+    image: vaultwarden/server:1.37.5
+    environment:
+      - DATABASE_URL=${VAULT_DATABASE_URL}
+      - DOMAIN=${VAULT_DOMAIN}
+      - SIGNUPS_ALLOWED=${VAULT_SIGNUPS_ALLOWED}
+    volumes:
+      - vault-data:/data
+    networks:
+      - homelab-net
+      - vault-net
+
+networks:
+  homelab-net:
+    external: true
+  vault-net:
+    external: true
+
+volumes:
+  vault-data:

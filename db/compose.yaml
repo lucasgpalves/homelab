@@ -12,6 +12,9 @@ services:
       - ZABBIX_DB_USER=${ZABBIX_DB_USER}
       - ZABBIX_DB_PASSWD=${ZABBIX_DB_PASSWD}
       - ZABBIX_DB_NAME=${ZABBIX_DB_NAME}
+      - VAULT_DB_USER=${VAULT_DB_USER}
+      - VAULT_DB_PASSWD=${VAULT_DB_PASSWD}
+      - VAULT_DB_NAME=${VAULT_DB_NAME}
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./init:/docker-entrypoint-initdb.d:ro
@@ -19,6 +22,7 @@ services:
     networks:
       - gitea-net
       - zabbix-net
+      - vault-net
     expose:
       - "5432"
 
@@ -26,6 +30,8 @@ networks:
   gitea-net:
     external: true
   zabbix-net:
+    external: true
+  vault-net:
     external: true
 
 volumes:
