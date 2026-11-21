@@ -1,5 +1,10 @@
+# Segredos e config local
 .env
+**/.env
 dnsmasq.conf
 dnsmasq.hosts
+
+# TLS (mkcert)
 nginx/certs/
 nginx/.bin/
+*.pem
