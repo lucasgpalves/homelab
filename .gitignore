@@ -1,3 +1,5 @@
 .env
 dnsmasq.conf
 dnsmasq.hosts
+nginx/certs/
+nginx/.bin/

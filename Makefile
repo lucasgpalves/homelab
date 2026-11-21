@@ -1,4 +1,4 @@
-.PHONY: help networks up down restart ps logs check-env \
+.PHONY: help networks up down restart ps logs check-env tls-certs \
 	up-infra up-apps \
 	db gitea zabbix grafana drone semaphore nginx dnsmasq
 
@@ -9,6 +9,7 @@ help:
 	@echo "Homelab — alvos disponíveis:"
 	@echo "  make networks   - cria as redes Docker externas"
 	@echo "  make check-env  - verifica se os .env necessários existem"
+	@echo "  make tls-certs  - gera CA/certificados mkcert (*.homelab.local)"
 	@echo "  make up         - sobe o ambiente completo (redes + stacks)"
 	@echo "  make up-infra   - sobe dnsmasq, db e nginx"
 	@echo "  make up-apps    - sobe gitea, zabbix, grafana, drone, semaphore"
@@ -17,6 +18,9 @@ help:
 	@echo "  make ps         - lista containers"
 	@echo "  make logs STACK=<nome>  - logs de um stack (ex.: zabbix)"
 	@echo "  make <stack>    - sobe um stack isolado"
+
+tls-certs:
+	@bash nginx/generate-certs.sh
 
 networks:
 	@for net in $(NETWORKS); do \
@@ -49,6 +53,10 @@ check-env:
 	echo "Arquivos .env obrigatórios OK."
 
 up-infra: networks
+	@if [ ! -f nginx/certs/homelab.pem ] || [ ! -f nginx/certs/homelab-key.pem ]; then \
+		echo "Certificados TLS ausentes — gerando com mkcert..."; \
+		bash nginx/generate-certs.sh; \
+	fi
 	@$(COMPOSE) -f dnsmasq/compose.yaml --project-directory dnsmasq up -d
 	@$(COMPOSE) -f db/compose.yaml --project-directory db up -d
 	@$(COMPOSE) -f nginx/compose.yaml --project-directory nginx up -d
