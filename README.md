@@ -2,7 +2,7 @@
 
 ## Contexto
 
-Eu possuía um notebook ocioso em casa e decidi instalá-lo com o **Ubuntu Server 22.04**, transformando-o em um *mini-servidor* dedicado. A escolha por esta versão se deu por ser mais leve que a 24.04, além de apresentar maior maturidade e estabilidade para ambientes de laboratório.
+Eu possuía um notebook ocioso em casa e decidi instalá-lo com o **Ubuntu Server 24.04**, transformando-o em um *mini-servidor* dedicado. A escolha por esta versão se deu por ser mais leve que a 24.04, além de apresentar maior maturidade e estabilidade para ambientes de laboratório.
 
 O objetivo foi sair do uso exclusivo de máquinas virtuais e passar a trabalhar com um servidor real, permitindo uma experiência mais próxima de cenários produtivos.
 
