@@ -30,12 +30,15 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - ./ca-bundle.crt:/etc/ssl/certs/ca-bundle.crt:ro
     environment:
       - DRONE_RPC_PROTO=http
       - DRONE_RPC_HOST=drone-server:80
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
       - DRONE_RUNNER_CAPACITY=1
       - DRONE_RUNNER_NAME=runner
+      - DRONE_RUNNER_VOLUMES=${DRONE_RUNNER_VOLUMES}
+      - DRONE_RUNNER_ENVIRON=${DRONE_RUNNER_ENVIRON}
     networks:
       - drone-net
 

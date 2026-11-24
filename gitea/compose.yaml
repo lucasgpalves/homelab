@@ -10,8 +10,11 @@ services:
       - GITEA__database__NAME=${GITEA_DB_NAME}
       - GITEA__database__USER=${GITEA_DB_USER}
       - GITEA__database__PASSWD=${GITEA_DB_PASSWD}
+      - GITEA__webhook__ALLOWED_HOST_LIST=${GITEA_WEBHOOK_ALLOWED}
+      - SSL_CERT_FILE=${SSL_CERT_FILE}
     volumes:
       - gitea-data:/data
+      - ./ca-bundle.crt:/etc/ssl/certs/ca-bundle.crt:ro
     ports:
       - "222:22"
     restart: always
