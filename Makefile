@@ -3,7 +3,7 @@
 	db gitea zabbix grafana drone semaphore nginx dnsmasq vault
 
 COMPOSE := docker compose
-NETWORKS := homelab-net gitea-net zabbix-net vault-net
+NETWORKS := homelab-net gitea-net zabbix-net vault-net semaphore-net
 
 help:
 	@echo "Homelab — alvos disponíveis:"

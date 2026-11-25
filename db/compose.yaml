@@ -23,6 +23,7 @@ services:
       - gitea-net
       - zabbix-net
       - vault-net
+      - semaphore-net
     expose:
       - "5432"
 
@@ -32,6 +33,8 @@ networks:
   zabbix-net:
     external: true
   vault-net:
+    external: true
+  semaphore-net:
     external: true
 
 volumes:
