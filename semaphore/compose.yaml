@@ -6,18 +6,25 @@ services:
         volumes:
             - semaphore-data:/var/semaphore
         environment:
-            - SEMAPHORE_DB_DIALECT=sqlite
+            - SEMAPHORE_DB_DIALECT=postgres
             - SEMAPHORE_ADMIN=${SEMAPHORE_ADMIN}
             - SEMAPHORE_ADMIN_PASSWORD=${SEMAPHORE_ADMIN_PASSWORD}
             - SEMAPHORE_ADMIN_NAME=${SEMAPHORE_ADMIN_NAME}
             - SEMAPHORE_ADMIN_EMAIL=${SEMAPHORE_ADMIN_EMAIL}
+            - SEMAPHORE_DB_USER=${SEMAPHORE_DB_USER}
+            - SEMAPHORE_DB_PASS=${SEMAPHORE_DB_PASS}
+            - SEMAPHORE_DB_HOST=${SEMAPHORE_DB_HOST}
+            - SEMAPHORE_DB_PORT=${SEMAPHORE_DB_PORT}
+            - SEMAPHORE_DB=${SEMAPHORE_DB}
         networks:
             - homelab-net
+            - semaphore-net
 
 networks:
   homelab-net:
     external: true
-
+  semaphore-net:
+    external: true
 volumes:
     semaphore-data:
         driver: local
