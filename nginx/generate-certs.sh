@@ -19,10 +19,10 @@ fi
 
 export CAROOT="${CERT_DIR}"
 
-echo "Gerando CA local e certificado para *.home.arpa..."
+echo "Gerando CA local e certificado para *.lab.home.arpa..."
 "${MKCERT_BIN}" -cert-file "${CERT_DIR}/homelab.pem" \
   -key-file "${CERT_DIR}/homelab-key.pem" \
-  "*.home.arpa" "home.arpa" localhost 127.0.0.1
+  "*.lab.home.arpa" "lab.home.arpa" localhost 127.0.0.1
 
 echo
 echo "Pronto."

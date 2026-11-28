@@ -12,11 +12,11 @@ Complementa o `README.md` com o “como fazer” do dia a dia.
 ```text
 Cliente (Windows)
   DNS → IP do Ubuntu (ex.: 10.1.1.10)
-  Browser → https://*.home.arpa
+  Browser → https://*.lab.home.arpa
         │
         ▼
 Ubuntu
-  dnsmasq (:53, host network) → *.home.arpa → IP LAN
+  dnsmasq (:53, host network) → *.lab.home.arpa → IP LAN
   nginx (:80 redirect, :443 TLS) → containers na homelab-net
   db (Postgres) nas redes gitea-net + zabbix-net
 ```
@@ -98,7 +98,7 @@ Teste no servidor:
 
 ```bash
 docker ps --filter name=dnsmasq
-dig @10.1.1.10 gitea.home.arpa +short
+dig @10.1.1.10 gitea.lab.home.arpa +short
 ```
 
 ### Windows
@@ -106,17 +106,17 @@ dig @10.1.1.10 gitea.home.arpa +short
 1. Na interface **conectada** (Wi‑Fi se Ethernet estiver off): DNS = `IP_LAN`
 2. Chrome → `chrome://settings/security` → **Usar DNS seguro** → Desativado
 3. `ipconfig /flushdns`
-4. `nslookup gitea.home.arpa IP_LAN`
+4. `nslookup gitea.lab.home.arpa IP_LAN`
 
 Atalho (`hosts`):
 
 ```text
-10.1.1.10  gitea.home.arpa
-10.1.1.10  drone.home.arpa
-10.1.1.10  zabbix.home.arpa
-10.1.1.10  grafana.home.arpa
-10.1.1.10  semaphore.home.arpa
-10.1.1.10  vault.home.arpa
+10.1.1.10  gitea.lab.home.arpa
+10.1.1.10  drone.lab.home.arpa
+10.1.1.10  zabbix.lab.home.arpa
+10.1.1.10  grafana.lab.home.arpa
+10.1.1.10  semaphore.lab.home.arpa
+10.1.1.10  vault.lab.home.arpa
 ```
 
 ---
@@ -139,7 +139,7 @@ No Windows: instalar `rootCA.pem` em **Máquina local** → **Autoridades de Cer
 
 HTTP (80) redireciona para HTTPS (443). Let’s Encrypt não emite para `.local`.
 
-Com TLS no Drone: `DRONE_SERVER_PROTO=https` e `DRONE_SERVER_HOST=drone.home.arpa`.
+Com TLS no Drone: `DRONE_SERVER_PROTO=https` e `DRONE_SERVER_HOST=drone.lab.home.arpa`.
 
 ---
 

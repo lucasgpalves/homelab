@@ -12,9 +12,9 @@ Objetivo: praticar infraestrutura próxima de cenários reais — Git, CI/CD, ob
 
 | Camada | Serviço | Função |
 |--------|---------|--------|
-| DNS | dnsmasq | Resolve `*.home.arpa` na LAN |
+| DNS | dnsmasq | Resolve `*.lab.home.arpa` na LAN |
 | Proxy | Nginx | Entrada HTTP→HTTPS (`:80` / `:443`) |
-| TLS | mkcert | CA local + certificado `*.home.arpa` |
+| TLS | mkcert | CA local + certificado `*.lab.home.arpa` |
 | Banco | PostgreSQL 15 | Instância única, DBs `gitea`, `zabbix` e `vaultwarden` |
 | Git | Gitea | Repositórios |
 | CI/CD | Drone | Pipelines integrados ao Gitea |

@@ -18,7 +18,7 @@ services:
       - DRONE_USER_CREATE=${DRONE_USER_CREATE}
       - SSL_CERT_FILE=${SSL_CERT_FILE}
     extra_hosts:
-      - "gitea.home.arpa:host-gateway"
+      - "gitea.lab.home.arpa:host-gateway"
     networks:
       - homelab-net
       - drone-net
