@@ -12,9 +12,9 @@ Goal: practice near-real infrastructure — Git, CI/CD, observability, internal 
 
 | Layer | Service | Role |
 |-------|---------|------|
-| DNS | dnsmasq | Resolves `*.homelab.local` on the LAN |
+| DNS | dnsmasq | Resolves `*.home.arpa` on the LAN |
 | Proxy | Nginx | HTTP→HTTPS entrypoint (`:80` / `:443`) |
-| TLS | mkcert | Local CA + `*.homelab.local` certificate |
+| TLS | mkcert | Local CA + `*.home.arpa` certificate |
 | Database | PostgreSQL 15 | Single instance, `gitea` and `zabbix` DBs |
 | Git | Gitea | Repositories |
 | CI/CD | Drone | Pipelines integrated with Gitea |

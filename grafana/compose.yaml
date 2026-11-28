@@ -14,7 +14,7 @@ services:
       - zabbix-net
       - homelab-net
     extra_hosts:
-      - "zabbix.homelab.local:host-gateway"
+      - "zabbix.home.arpa:host-gateway"
 
 volumes:
   grafana-data:

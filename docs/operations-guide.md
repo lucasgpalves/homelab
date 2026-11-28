@@ -12,11 +12,11 @@ Complements `README.en.md` with day-to-day how-to.
 ```text
 Client (Windows)
   DNS → Ubuntu IP (e.g. 10.1.1.10)
-  Browser → https://*.homelab.local
+  Browser → https://*.home.arpa
         │
         ▼
 Ubuntu
-  dnsmasq (:53, host network) → *.homelab.local → LAN IP
+  dnsmasq (:53, host network) → *.home.arpa → LAN IP
   nginx (:80 redirect, :443 TLS) → containers on homelab-net
   db (Postgres) on gitea-net + zabbix-net
 ```
@@ -98,7 +98,7 @@ Test on the server:
 
 ```bash
 docker ps --filter name=dnsmasq
-dig @10.1.1.10 gitea.homelab.local +short
+dig @10.1.1.10 gitea.home.arpa +short
 ```
 
 ### Windows
@@ -106,17 +106,17 @@ dig @10.1.1.10 gitea.homelab.local +short
 1. On the **connected** interface (Wi‑Fi if Ethernet is off): DNS = `LAN_IP`
 2. Chrome → `chrome://settings/security` → **Use secure DNS** → Off
 3. `ipconfig /flushdns`
-4. `nslookup gitea.homelab.local LAN_IP`
+4. `nslookup gitea.home.arpa LAN_IP`
 
 Shortcut (`hosts` file):
 
 ```text
-10.1.1.10  gitea.homelab.local
-10.1.1.10  drone.homelab.local
-10.1.1.10  zabbix.homelab.local
-10.1.1.10  grafana.homelab.local
-10.1.1.10  semaphore.homelab.local
-10.1.1.10  vault.homelab.local
+10.1.1.10  gitea.home.arpa
+10.1.1.10  drone.home.arpa
+10.1.1.10  zabbix.home.arpa
+10.1.1.10  grafana.home.arpa
+10.1.1.10  semaphore.home.arpa
+10.1.1.10  vault.home.arpa
 ```
 
 ---
@@ -139,7 +139,7 @@ On Windows: install `rootCA.pem` under **Local Machine** → **Trusted Root Cert
 
 HTTP (80) redirects to HTTPS (443). Let’s Encrypt does not issue for `.local`.
 
-With TLS for Drone: `DRONE_SERVER_PROTO=https` and `DRONE_SERVER_HOST=drone.homelab.local`.
+With TLS for Drone: `DRONE_SERVER_PROTO=https` and `DRONE_SERVER_HOST=drone.home.arpa`.
 
 ---
 

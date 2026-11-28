@@ -9,7 +9,7 @@ help:
 	@echo "Homelab — alvos disponíveis:"
 	@echo "  make networks   - cria as redes Docker externas"
 	@echo "  make check-env  - verifica se os .env necessários existem"
-	@echo "  make tls-certs  - gera CA/certificados mkcert (*.homelab.local)"
+	@echo "  make tls-certs  - gera CA/certificados mkcert (*.home.arpa)"
 	@echo "  make up         - sobe o ambiente completo (redes + stacks)"
 	@echo "  make up-infra   - sobe dnsmasq, db e nginx"
 	@echo "  make up-apps    - sobe gitea, zabbix, grafana, drone, semaphore"

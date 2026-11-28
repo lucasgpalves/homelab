@@ -15,6 +15,9 @@ services:
       - VAULT_DB_USER=${VAULT_DB_USER}
       - VAULT_DB_PASSWD=${VAULT_DB_PASSWD}
       - VAULT_DB_NAME=${VAULT_DB_NAME}
+      - SEMAPHORE_DB_USER=${SEMAPHORE_DB_USER}
+      - SEMAPHORE_DB_PASSWD=${SEMAPHORE_DB_PASSWD}
+      - SEMAPHORE_DB_NAME=${SEMAPHORE_DB_NAME}
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./init:/docker-entrypoint-initdb.d:ro

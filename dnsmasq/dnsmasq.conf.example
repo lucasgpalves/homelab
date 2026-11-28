@@ -5,8 +5,8 @@ bind-interfaces
 no-hosts
 addn-hosts=/etc/dnsmasq.hosts
 
-domain=homelab.local
-local=/homelab.local/
+domain=home.arpa
+local=/home.arpa/
 expand-hosts
 domain-needed
 bogus-priv
